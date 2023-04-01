@@ -31,7 +31,7 @@ func InsertOneDoc(db *mongo.Database, collection string, doc interface{}) (inser
 	return insertResult.InsertedID
 }
 
-func InsertPresensi(db *mongo.Database, col string, long float64, lat float64, lokasi string, phonenumber int, checkin string, biodata model.Mahasiswa) (InsertedID interface{}) {
+func InsertPresensi(db *mongo.Database, col string, long float64, lat float64, lokasi string, phonenumber int, checkin string, biodata []model.Mahasiswa) (InsertedID interface{}) {
 	var presensi model.Presensi
 	presensi.Latitude = long
 	presensi.Longitude = lat
@@ -94,13 +94,13 @@ func GetDosenFromNama(nama string, db *mongo.Database, col string) (dosen model.
 }
 
 func InsertJamSidang(db *mongo.Database, col string, durasi int, jam_masuk string, jam_keluar string, gmt int, hari string) (InsertedID interface{}) {
-	var jam_sidang model.JamSidang
-	jam_sidang.Durasi = durasi
-	jam_sidang.Jam_masuk = jam_masuk
-	jam_sidang.Jam_keluar = jam_keluar
-	jam_sidang.Gmt = gmt
-	jam_sidang.Hari = hari
-	return InsertOneDoc(db, col, jam_sidang)
+	var jamsidang model.JamSidang
+	jamsidang.Durasi = durasi
+	jamsidang.Jam_masuk = jam_masuk
+	jamsidang.Jam_keluar = jam_keluar
+	jamsidang.Gmt = gmt
+	jamsidang.Hari = hari
+	return InsertOneDoc(db, col, jamsidang)
 }
 
 func GetJamSidangFromDurasi(durasi int, db *mongo.Database, col string) (jamsidang model.JamSidang) {
@@ -147,3 +147,20 @@ func GetAllBapFromJudul(judul string, db *mongo.Database, col string) (bap []mod
 	}
 	return bap
 }
+
+func GetAllPresensi(db *mongo.Database, col string) (presensi []model.Presensi) {
+	mahasiswa := db.Collection(col)
+	filter := bson.M{}
+	cursor, err := mahasiswa.Find(context.TODO(), filter)
+	if err != nil {
+		fmt.Println("GetAllPresensi :", err)
+	}
+	err = cursor.All(context.TODO(), &presensi)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return presensi
+}
+
+
+

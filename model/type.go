@@ -11,7 +11,7 @@ type Mahasiswa struct {
 	Email        string             `bson:"email,omitempty" json:"email,omitempty"`
 	Jurusan      string             `bson:"jurusan,omitempty" json:"jurusan,omitempty"`
 	Jam_sidang   string             `bson:"jam_sidang,omitempty" json:"jam_sidang,omitempty"`
-	Harisidang  string             `bson:"hari_sidang,omitempty" json:"hari_sidang,omitempty"`
+	Harisidang   string             `bson:"hari_sidang,omitempty" json:"hari_sidang,omitempty"`
 }
 
 type Dosen struct {
@@ -39,7 +39,7 @@ type Presensi struct {
 	Phone_number int                `bson:"phone_number,omitempty" json:"phone_number,omitempty"`
 	Datetime     primitive.DateTime `bson:"datetime,omitempty" json:"datetime,omitempty"`
 	Checkin      string             `bson:"checkin,omitempty" json:"checkin,omitempty"`
-	Biodata      Mahasiswa          `bson:"biodata,omitempty" json:"biodata,omitempty"`
+	Biodata      []Mahasiswa          `bson:"biodata,omitempty" json:"biodata,omitempty"`
 }
 
 type Bap struct {
