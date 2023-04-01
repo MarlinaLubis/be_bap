@@ -31,7 +31,7 @@ func InsertOneDoc(db *mongo.Database, collection string, doc interface{}) (inser
 	return insertResult.InsertedID
 }
 
-func InsertPresensi(db *mongo.Database, col string, long float64, lat float64, lokasi string, phonenumber int, checkin string, biodata []model.Mahasiswa) (InsertedID interface{}) {
+func InsertPresensi(db *mongo.Database, col string, long float64, lat float64, lokasi string, phonenumber int, checkin string, biodata model.Mahasiswa) (InsertedID interface{}) {
 	var presensi model.Presensi
 	presensi.Latitude = long
 	presensi.Longitude = lat

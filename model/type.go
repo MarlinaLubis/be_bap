@@ -39,7 +39,7 @@ type Presensi struct {
 	Phone_number int                `bson:"phone_number,omitempty" json:"phone_number,omitempty"`
 	Datetime     primitive.DateTime `bson:"datetime,omitempty" json:"datetime,omitempty"`
 	Checkin      string             `bson:"checkin,omitempty" json:"checkin,omitempty"`
-	Biodata      []Mahasiswa          `bson:"biodata,omitempty" json:"biodata,omitempty"`
+	Biodata      Mahasiswa          `bson:"biodata,omitempty" json:"biodata,omitempty"`
 }
 
 type Bap struct {

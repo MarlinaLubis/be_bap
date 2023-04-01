@@ -14,14 +14,13 @@ func TestInsertPresensi(t *testing.T) {
 	lokasi := "Surabaya"
 	phonenumber := 6281256892345
 	checkin := "Masuk"
-	biodata := []model.Mahasiswa{
-		{
-			Nama:         "Amar Tana",
-			Phone_number:  6281256892345,
-			Email:        "amartana@gmail.com",
-			Jurusan:      "D4 Teknik Informatika",
-			Jam_sidang:   "10.00",
-		},
+	biodata := model.Mahasiswa{
+
+		Nama:         "Amar Tana",
+		Phone_number: 6281256892345,
+		Email:        "amartana@gmail.com",
+		Jurusan:      "D4 Teknik Informatika",
+		Jam_sidang:   "10.00",
 	}
 
 	hasil := module.InsertPresensi(module.MongoConn, "presensi", long, lat, lokasi, phonenumber, checkin, biodata)
