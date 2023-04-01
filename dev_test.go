@@ -34,12 +34,6 @@ func TestGetPresensiFromCheckin(t *testing.T) {
 	fmt.Println(data)
 }
 
-func TestGetPresensiLagiFromCheckin(t *testing.T) {
-	checkin := "Masuk"
-	data := module.GetPresensiFromCheckin(checkin, module.MongoConn, "presensi")
-	fmt.Println(data)
-}
-
 func TestInsertMahasiswa(t *testing.T) {
 	nama := "Amar Tana"
 	phone_number := 6281211345090
