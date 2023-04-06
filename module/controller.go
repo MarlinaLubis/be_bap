@@ -53,13 +53,14 @@ func GetPresensiFromCheckin(checkin string, db *mongo.Database, col string) (pre
 	return presensi
 }
 
-func InsertMahasiswa(db *mongo.Database, col string, nama string, phone_number int, email string, jam_sidang string, hari_sidang string) (InsertID interface{}) {
+func InsertMahasiswa(db *mongo.Database, col string, nama string, phone_number int, email string, jurusan string, jam_sidang string, hari_sidang string) (InsertID interface{}) {
 	var mahasiswa model.Mahasiswa
 	mahasiswa.Nama = nama
 	mahasiswa.Phone_number = phone_number
 	mahasiswa.Email = email
+	mahasiswa.Jurusan = jurusan
 	mahasiswa.Jam_sidang = jam_sidang
-	mahasiswa.Harisidang = hari_sidang
+	mahasiswa.Hari_sidang = hari_sidang
 	return InsertOneDoc(db, col, mahasiswa)
 }
 
@@ -139,7 +140,7 @@ func GetAllBapFromJudul(judul string, db *mongo.Database, col string) (bap []mod
 	filter := bson.M{}
 	cursor, err := data_bap.Find(context.TODO(), filter)
 	if err != nil {
-		fmt.Println("GetAllBapFromJudul :", err)
+		fmt.Println("GetALLData :", err)
 	}
 	err = cursor.All(context.TODO(), &bap)
 	if err != nil {
@@ -148,19 +149,18 @@ func GetAllBapFromJudul(judul string, db *mongo.Database, col string) (bap []mod
 	return bap
 }
 
-func GetAllPresensi(db *mongo.Database, col string) (presensi []model.Presensi) {
-	mahasiswa := db.Collection(col)
+func GetAllBap(db *mongo.Database, col string) (data []model.Bap) {
+	data_bap := db.Collection(col)
 	filter := bson.M{}
-	cursor, err := mahasiswa.Find(context.TODO(), filter)
+	cursor, err := data_bap.Find(context.TODO(), filter)
 	if err != nil {
-		fmt.Println("GetAllPresensi :", err)
+		fmt.Println("GetALLData :", err)
 	}
-	err = cursor.All(context.TODO(), &presensi)
+	err = cursor.All(context.TODO(), &data)
 	if err != nil {
 		fmt.Println(err)
 	}
-	return presensi
+	return data
 }
-
 
 

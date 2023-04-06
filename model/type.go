@@ -11,7 +11,7 @@ type Mahasiswa struct {
 	Email        string             `bson:"email,omitempty" json:"email,omitempty"`
 	Jurusan      string             `bson:"jurusan,omitempty" json:"jurusan,omitempty"`
 	Jam_sidang   string             `bson:"jam_sidang,omitempty" json:"jam_sidang,omitempty"`
-	Harisidang   string             `bson:"hari_sidang,omitempty" json:"hari_sidang,omitempty"`
+	Hari_sidang  string             `bson:"hari_sidang,omitempty" json:"hari_sidang,omitempty"`
 }
 
 type Dosen struct {
