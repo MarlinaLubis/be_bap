@@ -9,18 +9,18 @@ import (
 )
 
 func TestInsertPresensi(t *testing.T) {
-	long := 114.590111
-	lat :=  -3.316694
-	lokasi := "	Kalimantan "
-	phonenumber := 6281221089054
+	long := 110.828316
+	lat :=   -7.550676
+	lokasi := "	Solo"
+	phonenumber := 6281262487651
 	checkin := "Masuk"
 	biodata := model.Mahasiswa{    
-		Nama:         "Cahaya Satriani",
-		Phone_number: 6281221089054,
-		Email:        "cahaya@gmail.com",
+		Nama:         "Novi Febriani",
+		Phone_number:   6281262487651,
+		Email:        "novi@gmail.com",
 		Jurusan:      "D4 Teknik Informatika",
-		Jam_sidang:   "09.00",
-		Hari_sidang: "Rabu", 
+		Jam_sidang:   "10.00",
+		Hari_sidang: "Senin", 
 	}
 
 	hasil := module.InsertPresensi(module.MongoConn, "presensi", long, lat, lokasi, phonenumber, checkin, biodata)
@@ -34,45 +34,45 @@ func TestGetPresensiFromCheckin(t *testing.T) {
 }
 
 func TestInsertMahasiswa(t *testing.T) {
-	nama := "Cahaya Sastriani"
-	phone_number :=  6281221089054
-	email := "cahaya@gmail.com"
+	nama := "Novi Febriani"
+	phone_number := 6281262487651
+	email := "novifebri@gmail.com"
 	jurusan := "D4 Teknik Informatika"
-	jam_sidang := "09:00"
-    harisidang := "Rabu"
+	jam_sidang := "10:00"
+    harisidang := "Senin"
 
 	hasil := module.InsertMahasiswa(module.MongoConn, "mahasiswa", nama, phone_number, email, jurusan, jam_sidang, harisidang)
 	fmt.Println(hasil)
 }
 func TestGetMahasiswaFromNama(t *testing.T) {
-	nama := "Cahaya Sastriani"
+	nama := "Novi Febriani"
 	biodata := module.GetMahasiswaFromNama(nama, module.MongoConn, "mahasiswa")
 	fmt.Println(biodata)
 }
 
 func TestInsertDosen(t *testing.T) {
-	nama := "Woro Isti Rahayu, S.T., M.T., SFPC"
-	phone_number := 6281267885432
-	email := "woroisti@ulbi.ac.id"
-	jam_sidang := "09.00"
-	hari_sidang := "Rabu"
+	nama := " Roni Habibi, S.Kom., M.T., SFPC"
+	phone_number := 6281522176359
+	email := "roni.habibi@ulbi.ac.id"
+	jam_sidang := "10.00"
+	hari_sidang := "Senin"
 
 	hasil := module.InsertDosen(module.MongoConn, "dosen", nama, phone_number, email, jam_sidang, hari_sidang)
 	fmt.Println(hasil)
 }
 
 func TestGetDosenFromNama(t *testing.T) {
-	nama := "Woro Isti Rahayu, S.T., M.T., SFPC"
+	nama := " Roni Habibi, S.Kom., M.T., SFPC"
 	data := module.GetDosenFromNama(nama, module.MongoConn, "dosen")
 	fmt.Println(data)
 }
 
 func TestInsertJamSidang(t *testing.T) {
 	durasi := 60
-	jam_masuk := "09:00"
-	jam_keluar := "10:00"
+	jam_masuk := "10:00"
+	jam_keluar := "11:00"
 	gmt := 7
-	hari := "Rabu"
+	hari := "Senin"
 
 	hasil := module.InsertJamSidang(module.MongoConn, "jamsidang", durasi, jam_masuk, jam_keluar, gmt, hari)
 	fmt.Println(hasil)
@@ -85,18 +85,18 @@ func TestGetJamSidangFromDurasi(t *testing.T) {
 }
 
 func TestInsertBap(t *testing.T) {
-	judul := "Aplikasi Penjualan Berbasis Web"
-	nama_mahasiswa := "Cahaya Sastriani"
+	judul := "Aplikasi Raport Berbasis Web"
+	nama_mahasiswa := "Novi Febriani"
 	prodi := "D4 Teknik Informatika"
-	hasil_revisi := "Memperbaiki bagian usecase"
-	dosen := "Woro Isti Rahayu, S.T., M.T., SFPC"
+	hasil_revisi := "Memperbaiki database dan dashboard"
+	dosen := " Roni Habibi, S.Kom., M.T., SFPC"
 
 	hasil := module.InsertBap(module.MongoConn, "bap", judul, nama_mahasiswa, prodi, hasil_revisi, dosen )
 	fmt.Println(hasil)
 }
 
 func TestGetBapFromJudul(t *testing.T) {
-	judul := "Aplikasi Penjualan Berbasis Web"
+	judul := "Aplikasi Raport Berbasis Web"
 	data := module.GetBapFromJudul(judul, module.MongoConn, "bap")
 	fmt.Println(data)
 }
